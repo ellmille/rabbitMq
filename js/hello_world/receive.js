@@ -6,7 +6,7 @@ var amqp = require('amqplib/callback_api');
  * Connect to server and listen
  * {@link https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html}
  */
-amqp.connect('amps://localhost', function(err, conn){
+amqp.connect('amqp://localhost', function(err, conn){
     conn.createChannel(function(err, ch){
         var q = 'hello';
         //assert queue
