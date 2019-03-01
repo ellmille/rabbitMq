@@ -16,6 +16,7 @@ amqp.connect('amqp://localhost', function(err, conn){
             setTimeout(function() {
                 console.log(" [x] Done");
             }, secs * 1000);
-        }, {noAck: true});
+            /** set no ack to false to send an acknowledgment from the worker once it finihses the task */
+        }, {noAck: false});
     });
 });
