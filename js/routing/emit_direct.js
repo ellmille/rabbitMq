@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
  * Log based on severity of the error
+ * {@link https://www.rabbitmq.com/tutorials/tutorial-four-javascript.html}
  */
 var amqp = require('amqplib/callback_api');
 

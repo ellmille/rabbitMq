@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 /**
  * Only receives logs based on error code
- * 
- * Example:
- * node receive_direct warning error > logs_error.log -- this will only save warning and error logs
+ * {@link https://www.rabbitmq.com/tutorials/tutorial-four-javascript.html}
  */
 var amqp = require('amqplib/callback_api');
 var args = process.argv.slice(2);

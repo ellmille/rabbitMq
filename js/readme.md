@@ -1,12 +1,25 @@
 #Rabbit MQ
+##Getting started
+[Source] {https://www.rabbitmq.com/tutorials}
+| Producer | A program that sends a message |
+| Consumer | A program that receives a message |
+| Queue    | A "large message buffer" that lives inside Rabbit MQ |
+
 ##Exchange types
 | Fanout | Mindlessly Broadcasts |
 | Direct | A message goes to the queues whose binding key matches the routing key of the message |
 
-##Routing
-###Bindings
-**Binding is the relationship between an exchange and a queue.**
+##Work Queues
+```javascript
+    var q = 'queue_name';
+    ch.assertQueue(q, {durable: true});
+```
 
+##Publisher/Subscriber
+
+##Routing
+
+**Binding is the relationship between an exchange and a queue.**
 ```javascript
     channel.bindQueue(q.queue, exchange, '');
 ```
@@ -20,5 +33,9 @@ In a direct exchange, a message is delivered to any queue whose binding key matc
 
 A single queue may have multiple binding keys.
 
-[Source] {https://www.rabbitmq.com/tutorials/tutorial-four-javascript.html}
+To output messages to a log file
+```
+node receive_direct > logs_error.log 
+```
 
+##Topics
