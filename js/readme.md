@@ -47,3 +47,19 @@ The binding key must be in the same form
 * ```#``` (hash) can substitue **zero or more** words
 ⋅⋅* Behaves similar to a fanout exchange
 
+##Remote Procedure Call
+**RPC is a form of client-server interaction where a program causes a procedure to execute in a different address space, but it is coded as if it were a local procedure call**
+
+```javascript
+    ch.assertQueue('', {exclusive: true});
+    ch.sendToQueue('rpc_queue',new Buffer('10'), { replyTo: queue_name });
+```
+
+##Message Properties
+
+| Property | Description | Value |
+| -------- |:-----------:| -----:|
+|persistent| marks the message as transient or persistent | boolean |
+|content_type| describes mime-type of encoding ||
+|reply_to| names a callback queue | queue |
+|correlation_id| correlates RPC responses with requests | unique value |
