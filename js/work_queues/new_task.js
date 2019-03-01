@@ -10,6 +10,7 @@ var msg = process.argv.slice(2).join(' ') || "Hello World!";
 /** connect, assert queue and send message to queue*/
 amqp.connect('amqp://localhost', function(err, conn){
     conn.createChannel(function(err, ch){
+        /** if the client queue is durable, the listener queues must be durable*/
         ch.assertQueue(q, {durable: true});
         ch.sendToQueue(q, new Buffer(msg), {persistent: true});
         console.log("[x] Sent '%s'", msg);

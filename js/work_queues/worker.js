@@ -7,8 +7,12 @@ var q = 'task_queue';
 
 amqp.connect('amqp://localhost', function(err, conn){
     conn.createChannel(function(err, ch){
+        /** if the listener queues are durable, the client queue must be durable */
         ch.assertQueue(q, {durable: true});
-        
+
+        /** use prefetch method with value of 1, to not send more than one message to a worker at a time */
+        ch.prefetch(1);
+
         ch.consume(q, function(msg){
             var secs = msg.content.toString().split('.').length - 1;
 
