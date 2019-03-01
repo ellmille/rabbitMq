@@ -8,6 +8,7 @@
 ##Exchange types
 | Fanout | Mindlessly Broadcasts |
 | Direct | A message goes to the queues whose binding key matches the routing key of the message |
+| Topic  | A message is deliverd to all queues that are bound with a matching binding key. Keys are a list of words |
 
 ##Work Queues
 ```javascript
@@ -39,3 +40,10 @@ node receive_direct > logs_error.log
 ```
 
 ##Topics
+Messages sent to a topic exchange cannot have an arbitrary routing key. It must be a list of words (delimited by dots in js)
+The binding key must be in the same form
+* ```*``` (star) can substitute **one** word
+⋅⋅* Behaves similar to a direct exchange
+* ```#``` (hash) can substitue **zero or more** words
+⋅⋅* Behaves similar to a fanout exchange
+
