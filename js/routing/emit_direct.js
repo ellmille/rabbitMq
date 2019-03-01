@@ -11,6 +11,7 @@ amqp.connect('amqp://localhost', function(err, conn) {
         var args = process.argv.slice(2); 
 
         var msg = args.slice(1).join(' ') || 'Hello World!';
+        /** take entered severity or use info */
         var severity = (args.length > 0) ? args[0] : 'info';
 
         ch.assertExchange(ex, 'direct', {durable: false});
