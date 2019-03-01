@@ -5,6 +5,10 @@
 | Consumer | A program that receives a message |
 | Queue    | A "large message buffer" that lives inside Rabbit MQ |
 
+Steps
+1. Establish Connection
+2. Declare Queue
+
 ##Exchange types
 | Fanout | Mindlessly Broadcasts |
 | Direct | A message goes to the queues whose binding key matches the routing key of the message |
